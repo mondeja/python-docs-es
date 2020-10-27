@@ -4,9 +4,16 @@
     <ul class="this-page-menu">
         <li><a href="{{ pathto('bugs') }}">{% trans %}Report a Bug{% endtrans %}</a></li>
         <li>
+            {% set overrides = ["CONTRIBUTING.rst.txt", "coc.rst.txt", "faq.rst.txt", "git_diff.rst.txt", "progress.rst.txt", "reviewers-guide.rst.txt", "translation-memory.rst.txt", "upgrade-python-version.rst.txt"] %}
+            {% if sourcename in overrides %}
+            <a href="https://github.com/python/python-docs-es/blob/{{ version }}/.overrides/{{ sourcename|replace('.rst.txt', '.rst') }}"
+               rel="nofollow">{{ _('Show Source') }}
+            </a>
+            {% else %}
             <a href="https://github.com/python/python-docs-es/blob/{{ version }}/{{ sourcename|replace('.rst.txt', '.po') }}"
                rel="nofollow">{{ _('Show Source') }}
             </a>
+            {% endif %}
         </li>
     </ul>
 </div>
